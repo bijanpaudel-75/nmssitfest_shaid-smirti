@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Assistant by Blade_X</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+           background-color: #000;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 40px;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #00ffff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            opacity: 0.9;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .return-widget {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .return-btn {
+            display: inline-block;
+           background-color: white;
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+       
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff; }
+            to { text-shadow: 0 0 30px #00ffff, 0 0 50px #00ffff, 0 0 80px #00ffff; }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(0, 255, 255, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .content {
+                padding: 20px;
+                margin: 20px;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>About Us</h1>
+    <div class="content">
+        <p>
+            This webpage is made by a team from Shree Sahid Smriti Secondary School. Today, we came to Narayani Model Secondary School to compete in a hackathon competition organized by Narayani Model Secondary School. This webpage is not completely made by us; instead, we partially took help from AI. This page is named as Assistant by Blade_X, which basically helps users to make their daily life easier since it provides users shortcuts to some useful websites and a to-do list to make users more disciplined.
+        </p>
+        <div class="return-widget">
+            <a href="assist.html" class="return-btn">Return to Assistant by Blade_X</a>
+        </div>
+    </div>
+</body>
+</html>
