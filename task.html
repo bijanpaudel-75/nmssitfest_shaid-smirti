@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: rgb(213, 8, 227);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .nav-btn {
+            display: inline-block;
+            background-color: yellow;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .task-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 3px solid black;
+            border-radius: 15px;
+            padding: 20px;
+        }
+        #task-input {
+            width: calc(100% - 80px);
+            padding: 10px;
+            border: 1px solid #00ffff;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #e0e0e0;
+            margin-right: 10px;
+        }
+        #add-task-btn {
+            padding: 10px 15px;
+            background-color: yellow;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #task-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        #task-list li {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #task-list li button {
+            background: #ff0040;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daily Task Manager</h1>
+    <div class="task-container">
+        <input type="text" id="task-input" placeholder="Add a daily task...">
+        <button id="add-task-btn">Add Task</button>
+        <ul id="task-list"></ul>
+    </div>
+    <a href="about.html" target="_blank" class="nav-btn">About Us</a>
+
+    <script>
+        // Function to load tasks from localStorage
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = '';
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.innerHTML = `${task} <button onclick="removeTask('${task}')">×</button>`;
+                taskList.appendChild(li);
+            });
+        }
+
+        // Function to save tasks to localStorage
+        function saveTasks(tasks) {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        // Function to add a task
+        function addTask() {
+            const taskInput = document.getElementById('task-input');
+            const taskText = taskInput.value.trim();
+            if (taskText) {
+                const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.push(taskText);
+                saveTasks(tasks);
+                loadTasks();
+                taskInput.value = '';
+            }
+        }
+
+        // Function to remove a task
+        function removeTask(taskText) {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const updatedTasks = tasks.filter(task => task !== taskText);
+            saveTasks(updatedTasks);
+            loadTasks();
+        }
+
+        // Event listener for add task button
+        document.getElementById('add-task-btn').addEventListener('click', addTask);
+
+        // Allow adding tasks with Enter key
+        document.getElementById('task-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // Load tasks on page load
+        window.addEventListener('load', loadTasks);
+    </script>
+</body>
+</html>
